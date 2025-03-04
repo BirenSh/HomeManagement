@@ -1,0 +1,54 @@
+App Flow & Structure
+1. User Registration & Authentication
+Users sign up/log in using email, phone number, or social login.
+Firebase Auth or OAuth for authentication.
+
+2. Dashboard (Home Screen)
+Displays:
+Current Users' Status: Who is at home, who checked out, and expected arrival times.
+Pending & Completed Duties: List of assigned and completed household tasks.
+Recent Activities: Logs of check-in, check-out, and duty updates.
+
+3. Check-in & Check-out System
+Users manually check in when they arrive home and check out when they leave.
+Option to add an Expected Arrival Time when checking out.
+4. Duty Management
+
+Users can mark assigned duties as completed or pending.
+Example duties:
+Garbage disposal
+Locking the main door
+Watering plants
+Other users get notifications when a duty is completed or left pending.
+
+5. Notifications & Alerts
+Push Notifications for:
+When a user checks in or out.
+When a duty is completed.
+When a duty is overdue.
+In-App Alerts for missed duties or unconfirmed check-ins.
+
+6. User Activity History
+A log showing each user's check-in/check-out history and duty completion.
+
+7. Settings & User Management
+Users can:
+Update their profile.
+Enable/disable notifications.
+View/edit duty assignments.
+
+
+7. Reminder System
+Scheduled Reminders:
+
+If a duty (e.g., garbage disposal) is not marked as completed within a set time, the assigned user gets a reminder.
+Push Notifications:
+
+If a duty remains incomplete after the first reminder, a second notification can be sent to all users.
+Dashboard Alerts:
+
+A visible alert on the home screen showing pending duties.
+Recurring Duties:
+
+Some tasks (e.g., locking the door) can have daily or weekly reminders.
+

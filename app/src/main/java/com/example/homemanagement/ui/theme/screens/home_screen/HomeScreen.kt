@@ -48,16 +48,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.Navigator
 import com.example.homemanagement.ui.theme.screens.CommonColors
+import com.example.homemanagement.ui.theme.screens.users_screen.UsersScreen
 import com.example.homemanagement.utils.CalenderUtil
 
 class HomeScreen(val  userId:String=""):Screen {
@@ -129,7 +128,7 @@ class HomeScreen(val  userId:String=""):Screen {
                         }
                     )
                     Spacer(modifier = Modifier.height(16.dp))
-                    QuickActionsSection()
+                    QuickActionsSection(navigator)
 
                 }
             }
@@ -137,11 +136,7 @@ class HomeScreen(val  userId:String=""):Screen {
     }
 
 
-    @Preview(showSystemUi = true)
-    @Composable
-    fun PreviewUI() {
-        HomeScreenUi1()
-    }
+
 
 }
 
@@ -325,7 +320,7 @@ fun BottomBarItems(
 
 
 @Composable
-fun QuickActionsSection() {
+fun QuickActionsSection(navigator: Navigator?) {
     Column {
         Text(
             text = "Quick Actions",
@@ -358,7 +353,7 @@ fun QuickActionsSection() {
                     .clip(RoundedCornerShape(12.dp))
                     .background(CommonColors.TextColorGray.copy(alpha = 0.2f)),
                 onItemClick = {
-//                    showToast("Yet to come feature...")
+                    navigator?.push(UsersScreen())
                 }
             )
         }
@@ -388,7 +383,6 @@ fun QuickActionsSection() {
                     .clip(RoundedCornerShape(12.dp))
                     .background(CommonColors.TextColorGray.copy(alpha = 0.2f)),
                 onItemClick = {
-//                    navigator?.push(WebViewScreen())
                 }
             )
         }

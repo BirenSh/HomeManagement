@@ -1,0 +1,7 @@
+
+Tech Stack
+1. Frontend (Android)
+2. Jetpack Compose for UI
+3. MVVM Architecture for state management
+4. Room Database for offline storage
+5. Firebase Firestore for real-time updates

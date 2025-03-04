@@ -2,6 +2,7 @@ package com.example.homemanagement.ui.theme.screens.login_screen
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.homemanagement.models.data_models.UserEntity
 import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -55,7 +56,28 @@ class LoginViewModel @Inject constructor(
             }
             firebaseAuth.createUserWithEmailAndPassword(email, password)
                 .addOnSuccessListener { result ->
-                    _uiState.value = AuthState.Success(result.user?.uid ?: "")
+                    val userId = result.user?.uid?:""
+                    _uiState.value = AuthState.Success (userId?:"")
+
+                    // After creating user in FirebaseAuth, save to Firestore
+                    // Create a user entity
+                    val user = UserEntity(
+                        userId = userId,
+                        name = email,
+                        phoneNumber = "1232323223",
+                        role = "Admin"
+                    )
+
+//                    firestore.collection("users").document(userId)
+//                        .set(user)
+//                        .addOnSuccessListener {
+//                            _uiState.value = AuthState.Success(userId)
+//                        }
+//                        .addOnFailureListener { exception ->
+//                            _uiState.value = AuthState.Error(exception.message ?: "Failed to store user data")
+//                        }
+
+
                 }
                 .addOnFailureListener { exception ->
                     _uiState.value = AuthState.Error(exception.message ?: "Registration Failed")
