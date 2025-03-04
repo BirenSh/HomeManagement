@@ -1,4 +1,4 @@
-package com.example.homemanagement.ui.theme.screens.home_screen
+package com.example.homemanagement.ui.screens.home_screen
 
 import android.os.Build
 import androidx.annotation.RequiresApi
@@ -55,8 +55,8 @@ import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.Navigator
-import com.example.homemanagement.ui.theme.screens.CommonColors
-import com.example.homemanagement.ui.theme.screens.users_screen.UsersScreen
+import com.example.homemanagement.ui.screens.CommonColors
+import com.example.homemanagement.ui.screens.users_screen.UsersScreen
 import com.example.homemanagement.utils.CalenderUtil
 
 class HomeScreen(val  userId:String=""):Screen {

@@ -1,4 +1,4 @@
-package com.example.homemanagement.ui.theme.screens.users_screen
+package com.example.homemanagement.ui.screens.users_screen
 
 import com.example.homemanagement.models.dao.UserDao
 import com.example.homemanagement.models.data_models.UserEntity
@@ -14,6 +14,9 @@ class UserRepository @Inject constructor(
 
     suspend fun addUser(user: UserEntity) {
         userDao.insertUser(user)
+    }
+    suspend fun addListOfUsers(userList: List<UserEntity>){
+        userDao.insertUserList(userList)
     }
 
     suspend fun removeUser(user: UserEntity) {

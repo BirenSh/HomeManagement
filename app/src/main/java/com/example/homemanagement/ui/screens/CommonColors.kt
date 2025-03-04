@@ -1,4 +1,4 @@
-package com.example.homemanagement.ui.theme.screens
+package com.example.homemanagement.ui.screens
 
 import androidx.compose.ui.graphics.Color
 

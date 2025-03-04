@@ -1,4 +1,4 @@
-package com.example.homemanagement.ui.theme.screens.splash_screen
+package com.example.homemanagement.ui.screens.first_sync
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -7,49 +7,45 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
-import cafe.adriel.voyager.navigator.Navigator
 import com.example.homemanagement.R
-import com.example.homemanagement.ui.theme.screens.home_screen.HomeScreen
-import com.example.homemanagement.ui.theme.screens.login_screen.LoginScreen
+import com.example.homemanagement.ui.screens.home_screen.HomeScreen
+import com.example.homemanagement.ui.screens.users_screen.UsersViewModel
+import kotlinx.coroutines.delay
 
-
-class SplashScreen() :Screen {
+class FirstTimeSync:Screen {
     @Composable
     override fun Content() {
-        SplashScreenUi()
-    }
+        val userViewModel = hiltViewModel<UsersViewModel>()
+        val syncViewModel = hiltViewModel<FirstTimeSyncViewModel>()
 
-    private @Composable
-    fun SplashScreenUi() {
-        val navigator:Navigator? = LocalNavigator.current
-        val viewModel = hiltViewModel<SplashViewModel>()
-        val loading:Boolean by viewModel.loading.collectAsState()
-        if (loading){
-            ShowSplashUI()
-        }else{
-            navigator?.push(HomeScreen())
+        val navController = LocalNavigator.current
+        LaunchedEffect(Unit) {
+            syncViewModel.syncUsersFromFireStore()
         }
 
+        LaunchedEffect(Unit) {
+            delay(3000)
+            navController?.push(HomeScreen())
+        }
+
+        FirstTimeSyncUI(userViewModel)
     }
 
     private @Composable
-    fun ShowSplashUI() {
+    fun FirstTimeSyncUI(userViewModel: UsersViewModel) {
+
         Box(
             modifier = Modifier
                 .fillMaxSize(),
@@ -74,19 +70,17 @@ class SplashScreen() :Screen {
                 )
 
                 Text(
-                    text = "This is SplashScreen",
+                    text = "Syncing Data",
                     style = MaterialTheme.typography.titleSmall
                 )
 
             }
 
         }
-    }
+
+    } //FirstTimeSyncUI
 
 
-    @Preview(showSystemUi = true)
-    @Composable
-    fun ContentScreen(){
-        SplashScreenUi()
-    }
+
+    //class end there
 }

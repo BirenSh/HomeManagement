@@ -1,4 +1,4 @@
-package com.example.homemanagement.ui.theme.screens.users_screen
+package com.example.homemanagement.ui.screens.users_screen
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -16,9 +16,6 @@ class UsersViewModel @Inject constructor(private val repository: UserRepository)
     private val _uiState = MutableStateFlow<UiState<List<UserEntity>>>(UiState.Loading)
     val uiState: StateFlow<UiState<List<UserEntity>>> = _uiState.asStateFlow()
 
-    init {
-//        getUsers()
-    }
 
     val listOfuser = arrayListOf(
         UserEntity(userId = "123", name = "Birnd", phoneNumber = "23423523", role = "Admin"),
@@ -56,7 +53,7 @@ class UsersViewModel @Inject constructor(private val repository: UserRepository)
     fun getUsers() {
         viewModelScope.launch {
             _uiState.value = UiState.Loading
-            val userList = listOfuser//repository.getAllUsers()
+            val userList = repository.getAllUsers()
             if (userList.isNotEmpty()){
                 _uiState.value = UiState.Success(userList)
             }else{

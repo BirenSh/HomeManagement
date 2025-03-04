@@ -1,4 +1,4 @@
-package com.example.homemanagement.ui.theme.screens.users_screen
+package com.example.homemanagement.ui.screens.users_screen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*

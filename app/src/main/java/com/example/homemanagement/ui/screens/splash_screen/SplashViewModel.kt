@@ -1,4 +1,4 @@
-package com.example.homemanagement.ui.theme.screens.splash_screen
+package com.example.homemanagement.ui.screens.splash_screen
 
 import androidx.compose.runtime.MutableState
 import androidx.lifecycle.ViewModel

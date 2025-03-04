@@ -1,6 +1,7 @@
 package com.example.homemanagement.modules
 
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,5 +16,8 @@ object FirebaseModule {
     @Singleton
     fun firebaseAuth(): FirebaseAuth = FirebaseAuth.getInstance()
 
+    @Provides
+    @Singleton
+    fun fireBaseFireStore():FirebaseFirestore = FirebaseFirestore.getInstance()
 
 }

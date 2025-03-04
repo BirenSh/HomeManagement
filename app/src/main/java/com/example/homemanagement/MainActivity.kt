@@ -6,7 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import cafe.adriel.voyager.navigator.Navigator
 import com.example.homemanagement.ui.theme.HomeManagementTheme
-import com.example.homemanagement.ui.theme.screens.splash_screen.SplashScreen
+import com.example.homemanagement.ui.screens.splash_screen.SplashScreen
 import com.google.firebase.FirebaseApp
 import dagger.hilt.EntryPoint
 import dagger.hilt.android.AndroidEntryPoint

@@ -64,6 +64,9 @@ dependencies {
     // Firebase Firestore & Auth
     implementation(platform(libs.firebase.bom))
     implementation(libs.google.firebase.auth.ktx)
+    implementation(libs.firebase.firestore)
+
+
 
     // Lifecycle & ViewModel
     implementation(libs.androidx.lifecycle.viewmodel.compose)

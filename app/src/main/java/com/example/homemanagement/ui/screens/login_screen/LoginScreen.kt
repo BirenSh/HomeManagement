@@ -1,4 +1,4 @@
-package com.example.homemanagement.ui.theme.screens.login_screen
+package com.example.homemanagement.ui.screens.login_screen
 
 import androidx.activity.compose.LocalActivity
 import androidx.compose.foundation.Image
@@ -49,7 +49,9 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.Navigator
 import com.example.homemanagement.R
-import com.example.homemanagement.ui.theme.screens.home_screen.HomeScreen
+import com.example.homemanagement.ui.screens.first_sync.FirstTimeSync
+import com.example.homemanagement.ui.screens.home_screen.HomeScreen
+import com.example.homemanagement.ui.screens.splash_screen.SplashScreen
 
 class LoginScreen:Screen {
     @Composable
@@ -204,7 +206,7 @@ class LoginScreen:Screen {
                     }
                     is AuthState.Success ->{
                         val userID = (uiState as AuthState.Success).userId
-                        navigator?.push(HomeScreen(userID))
+                        navigator?.push(FirstTimeSync())
                     }
                     is AuthState.Error -> Text("Error: ${(uiState as AuthState.Error).message}", color = MaterialTheme.colorScheme.error)
                     else -> {}
